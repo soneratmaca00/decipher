@@ -50,7 +50,7 @@ export default function Preview({ navigation, route }) {
             </View>
 
             <View>
-                <View style={styles.ListItems}>
+                <View style={[styles.ListItems, {borderTopWidth: 1}]}>
                     <Text style={styles.ListItemsTextLeft}>Payment method</Text>
                     <View style={{flexDirection:'row'}}>
                     <IconBank name="bank" size={20} color="#D5E2F4"  style={[styles.bankIcon]}/>
@@ -125,10 +125,10 @@ const styles=StyleSheet.create({
     smallItems:{
         color:'white',
         backgroundColor:'#0066ff',        
-        width:60,
-        padding:2,
-        borderRadius:10,
-        textAlign:'center',
+        width:70,
+        alignItems: 'center',
+        padding:3,
+        borderRadius:20,
         marginLeft:110,
               
     },
@@ -152,9 +152,7 @@ const styles=StyleSheet.create({
         justifyContent:'space-between',
         paddingHorizontal:12,
         paddingVertical:15,
-        borderTopColor:'#D6D6D6',
-        borderTopWidth:1,
-        borderBottomColor:'#D6D6D6',
+        borderColor:'#D6D6D6',
         borderBottomWidth:1,
     },
     ListItemsTextRight:{
@@ -175,9 +173,7 @@ const styles=StyleSheet.create({
     ListItemsFeeContainer:{
         paddingHorizontal:12,
         paddingVertical:15,
-        borderTopColor:'#D6D6D6',
-        borderTopWidth:1,
-        borderBottomColor:'#D6D6D6',
+        borderColor:'#D6D6D6',
         borderBottomWidth:1,
     },
     ListItemsTotalTextLeft:{

@@ -141,17 +141,15 @@ const styles=StyleSheet.create({
     smallItems:{
         color:'white',
         backgroundColor:'#0066ff',        
-        width:60,
-        padding:2,
-        borderRadius:10,
-        textAlign:'center',
+        width:70,
+        padding:3,
+        borderRadius:20,
         marginLeft:110,
-              
+        alignItems:'center'    
     },
     smallItemsText:{
         color:'white',      
-        textAlign:'center',
-        width:60,      
+        textAlign:'center',  
     },
     depositContainer:{
         alignItems:'center',

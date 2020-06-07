@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, 
     Image,Dimensions, TextInput, TouchableOpacity,Keyboard } from 'react-native'
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { TouchableWithoutFeedback, ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/EvilIcons'
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -10,9 +10,7 @@ const screenHeight = Math.round(Dimensions.get('window').height)
 export default function Login({ navigation }) {
     return (
         <SafeAreaView style={{backgroundColor:'#FAFAFA', height:screenHeight,}}>
-            <TouchableWithoutFeedback onPress={() => {
-                Keyboard.dismiss()
-            }}>
+            <ScrollView>
                 <View style={styles.topBar} >
                     <TouchableOpacity
                     style={styles.button}
@@ -59,7 +57,7 @@ export default function Login({ navigation }) {
                     </View>
                     <Text style={styles.version}>Version 1.0.0</Text>
                 </View>
-            </TouchableWithoutFeedback>
+            </ScrollView>
         </SafeAreaView>
     )   
 }
@@ -121,6 +119,7 @@ const styles=StyleSheet.create({
       },
       textInput:{
         width:'80%',
+        paddingVertical: 15
       },
       version:{
           fontSize:12,
