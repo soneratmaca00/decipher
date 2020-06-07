@@ -23,7 +23,7 @@ export default function DepositSuccess(props) {
             colors={['#003380','#005ce6','#1a75ff']}
             stops={[0.05,0.3, 0.6]}
             center={[gradientwidth/2,gradientHeight/2]}
-            radius={200}>
+            radius={500}>
             {
                 <View style={styles.gradientInner}>
                 <IconCheck name="check-circle-outline" size={80} color="white"  style={[styles.iconCheck]}/>

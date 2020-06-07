@@ -27,7 +27,7 @@ export default function Dashboard({ navigation }) {
             colors={['#003380','#005ce6','#1a75ff']}
             stops={[0.05,0.3, 0.6]}
             center={[screenWidth/2,100]}
-            radius={200}>
+            radius={700}>
             {
             <View style={styles.containerouter}>
                 <View style={styles.smallItemsList}>
@@ -42,7 +42,7 @@ export default function Dashboard({ navigation }) {
                         <Text style={[styles.smallItemsText]}>Deposit</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={[styles.smallItems]}
-                    onPress={() => navigation.navigate('Earn1')}                        
+                    onPress={() => navigation.navigate('Deposit')}                        
                     >
                         <Text style={styles.smallItemsText}>Earn</Text>
                     </TouchableOpacity>
@@ -138,16 +138,14 @@ const styles = StyleSheet.create({
     smallItems:{
         color:'white',
         backgroundColor:'rgba(204, 204, 204, 0.5)',        
-        width:60,
-        padding:2,
-        borderRadius:10,
-        textAlign:'center',
-              
+        borderRadius:20,
+        paddingVertical: 3,
+        width: 70,
+        alignItems: 'center'
     },
     smallItemsText:{
         color:'white',      
-        textAlign:'center',
-        width:60,      
+        textAlign:'center',    
     },
     
     smallItemsList:{
