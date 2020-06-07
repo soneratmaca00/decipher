@@ -1,9 +1,11 @@
 import React , { useState } from 'react';
-import { StyleSheet, View, Text, Image,Dimensions, TouchableOpacity, FlatList,ScrollView } from 'react-native'
+import { StyleSheet, View, Text,Dimensions, 
+    TouchableOpacity, FlatList } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Icona from 'react-native-vector-icons/EvilIcons'
 import IconApple from 'react-native-vector-icons/FontAwesome5' 
 import IconNext from 'react-native-vector-icons/MaterialIcons'
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 
@@ -47,16 +49,19 @@ export default function Login({ navigation }) {
 
     } 
     return (
-        <View>
+        <SafeAreaView style={styles.safeAreaView}> 
             <View style={styles.topBar} >
                 <TouchableOpacity
-                style={styles.button}
                 onPress={() => navigation.goBack()}                        
                 >
                     <Icona name="close" size={30} color="#8c8c8c"  style={styles.topIcon} />
                 </TouchableOpacity>
                 
-                <Text style={styles.smallItems}>Deposit</Text>
+                <View style={[styles.smallItems]}
+                                              
+                        >
+                            <Text style={[styles.smallItemsText]}>Deposit</Text>
+                </View>
                          
             </View>
             <View style={styles.depositContainer}>
@@ -98,7 +103,9 @@ export default function Login({ navigation }) {
             />
             <TouchableOpacity
                         style={styles.depositPreviewContainer}
-                        onPress={() => navigation.navigate('Dashboard')}
+                        onPress={() => navigation.navigate('Preview', {
+                            depositAmount:deposit,
+                        })}
                         
                         >
                         <View style={styles.depositPreview}>
@@ -110,11 +117,16 @@ export default function Login({ navigation }) {
             </TouchableOpacity>
         
         
-        </View>
+        </SafeAreaView>
     )
 }
 
 const styles=StyleSheet.create({
+    safeAreaView:{
+        flexDirection:'column',
+        justifyContent:'space-between',
+        height:'100%',
+    },
     topBar:{
         flexDirection:'row',
         
@@ -125,6 +137,7 @@ const styles=StyleSheet.create({
         marginLeft:10,
     },
     
+    
     smallItems:{
         color:'white',
         backgroundColor:'#0066ff',        
@@ -134,6 +147,11 @@ const styles=StyleSheet.create({
         textAlign:'center',
         marginLeft:110,
               
+    },
+    smallItemsText:{
+        color:'white',      
+        textAlign:'center',
+        width:60,      
     },
     depositContainer:{
         alignItems:'center',

@@ -4,36 +4,52 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button,Image,TouchableOpacity, TouchableHighlight,TouchableNativeFeedback } from 'react-native';
 // import all basic components
 import Swiper from "react-native-swiper";
-
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ViewPager( { navigation } ) {
   
 
           
             return (
-              <View style={{ flex: 1, alignItems:'center', backgroundColor:'white'}}>
+              <SafeAreaView style={{ flex: 1, alignItems:'center', backgroundColor:'white'}}>
               <Swiper style={styles.wrapper}  showsButtons={false} autoplay >
                 <View style={styles.slide1}>
-                  <Image style={styles.logo1} source={require('./kcklogo.png')}/>
+                  <Image style={styles.logo1} source={require('./Blue2.png')}/>
                   <Text style={styles.title}>Welcome to Decipher</Text>
                   <Text style={styles.description}>Earn high yield on your cash in an insured account</Text>
                 </View>
                 <View style={styles.slide2outer}>
-                  <Image style={styles.kckLogo} source={require('./kcklogo.png')}/>
+                  <Image style={styles.kckLogo} source={require('./Blue2.png')}/>
                   <View style={styles.slide2}>
-                    <Image style={styles.logo2} source={require('./kaplumbaga.png')}/>
+                    <Image style={styles.logo2} source={require('./money.png')}/>
                     <Text style={styles.title}>High Yieldon Your Cash</Text>
                     <Text style={styles.description}>Made possible by alternative markets with continuous compounding</Text>
                   </View>
                 </View>
-                <View style={styles.slide3outer}>
-                  <Image style={styles.kckLogo} source={require('./kcklogo.png')}/>
-                  <View style={styles.slide3}>
-                    <Image style={styles.logo3} source={require('./truck.png')}/>
+                <View style={styles.slide2outer}>
+                  <Image style={styles.kckLogo} source={require('./Blue2.png')}/>
+                  <View style={styles.slide2}>
+                    <Image style={styles.logo2} source={require('./truck.png')}/>
                     <Text style={styles.title}>High Yieldon Your Cash</Text>
                     <Text style={styles.description}>Made possible by alternative markets with continuous compounding</Text>
                   </View>
                 </View>
+                <View style={styles.slide2outer}>
+                <Image style={styles.kckLogo} source={require('./Blue2.png')}/>
+                <View style={styles.slide2}>
+                  <Image style={styles.logo2} source={require('./money5.png')}/>
+                  <Text style={styles.title}>No Minumums. No Fees.</Text>
+                  <Text style={styles.description}>No joke. Start with any amount. What you see is what you get.</Text>
+                </View>
+              </View>
+              <View style={styles.slide2outer}>
+                <Image style={styles.kckLogo} source={require('./Blue2.png')}/>
+                <View style={styles.slide2}>
+                  <Image style={styles.logo2} source={require('./money4.png')}/>
+                  <Text style={styles.title}>Withdraw Anytime</Text>
+                  <Text style={styles.description}>No lockup periods. Your money is ready whenever you need it.</Text>
+                </View>
+              </View>
             </Swiper>
             <TouchableOpacity
               style={styles.button}
@@ -55,7 +71,7 @@ export default function ViewPager( { navigation } ) {
                 <Text style={styles.logInText} >Log In</Text>
               </TouchableOpacity>
             </View>
-            </View>
+            </SafeAreaView>
             )
             }
             const styles = StyleSheet.create({
@@ -70,15 +86,6 @@ export default function ViewPager( { navigation } ) {
                 flex:1,
               },
               slide2: {
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'white'
-              },
-              slide3outer:{
-                flex:1,
-              },
-              slide3: {
                 flex: 1,
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -99,17 +106,15 @@ export default function ViewPager( { navigation } ) {
               logo1:{
                 width:150,
                 height:150,
+                marginTop:60,
               },
               logo2:{
                 width:200,
                 height:200,
-                marginTop:30,
+                marginTop:60,
+                marginBottom:5,
               },
-              logo3:{
-                width:200,
-                height:200,
-                marginTop:30,
-              },
+              
               kckLogo:{
                 width:60,
                 height:60,

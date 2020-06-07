@@ -1,58 +1,65 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image,Dimensions, TextInput, TouchableOpacity } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import { StyleSheet, View, Text, Image,Dimensions, 
+    TextInput, TouchableOpacity,SafeAreaView, Keyboard } from 'react-native'
+import Icon from 'react-native-vector-icons/EvilIcons'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const screenWidth = Math.round(Dimensions.get('window').width)
 const screenHeight = Math.round(Dimensions.get('window').height)
 export default function Login({ navigation }) {
     return (
-        <View style={{backgroundColor:'#FAFAFA', height:screenHeight,}}>
-            <View style={styles.topBar} >
-                <TouchableOpacity
-                style={styles.button}
-                onPress={() => navigation.goBack()}                        
-                >
-                    <Icon name="close" size={30} color="#8c8c8c"  style={styles.topIcon}/>
-                </TouchableOpacity>
-                <TouchableOpacity
-                style={styles.button}
-                onPress={() => navigation.navigate('Signup')}                        
-                >
-                    <Text style={styles.topText}>Sign Up</Text>
-                </TouchableOpacity>          
-            </View>
-            <View style={styles.smallContainer}>
-                <Image style={styles.smallImg} source={require('./Blue2.png')}/>
-                <Text style={styles.LogInText}>Log In</Text>
-            </View>
-            <View style={styles.loginContainerOuter}>
-                <View style={styles.loginContainer}>
-                    <TextInput style={styles.textInput} placeholder='Email'></TextInput>
-                    <TextInput style={styles.textInput} placeholder='Password'></TextInput>
+        <SafeAreaView style={{backgroundColor:'#FAFAFA', height:screenHeight,}}>
+            <TouchableWithoutFeedback onPress={() => {
+                Keyboard.dismiss()
+            }}>
+
+                <View style={styles.topBar} >
                     <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => navigation.navigate('Dashboard')}
-                        
-                        >
-                        <View style={styles.logIn}>
-                        
-                        
-                        <Text style={styles.logInText}>Log In</Text>
-                                        
-                        </View>
+                    style={styles.button}
+                    onPress={() => navigation.goBack()}                        
+                    >
+                        <Icon name="close" size={30} color="#8c8c8c"  style={styles.topIcon}/>
                     </TouchableOpacity>
-                    <View style={styles.forgotPassword} >
-                        <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => navigation.navigate('Login')}
-                        >
-                        <Text style={styles.forgotPasswordText} >Forgot Password?</Text>
-                        </TouchableOpacity>
-                    </View>
+                    <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => navigation.navigate('Signup')}                        
+                    >
+                        <Text style={styles.topText}>Sign Up</Text>
+                    </TouchableOpacity>          
                 </View>
-                <Text style={styles.version}>Version 1.0.0</Text>
-            </View>
-        </View>
+                <View style={styles.smallContainer}>
+                    <Image style={styles.smallImg} source={require('./Blue2.png')}/>
+                    <Text style={styles.LogInText}>Log In</Text>
+                </View>
+                <View style={styles.loginContainerOuter}>
+                    <View style={styles.loginContainer}>
+                        <TextInput style={styles.textInput} placeholder='Email'></TextInput>
+                        <TextInput style={styles.textInput} placeholder='Password'></TextInput>
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={() => navigation.navigate('Dashboard')}
+                            
+                            >
+                            <View style={styles.logIn}>
+                            
+                            
+                            <Text style={styles.logInText}>Log In</Text>
+                                            
+                            </View>
+                        </TouchableOpacity>
+                        <View style={styles.forgotPassword} >
+                            <TouchableOpacity
+                            style={styles.button}
+                            onPress={() => navigation.navigate('Login')}
+                            >
+                            <Text style={styles.forgotPasswordText} >Forgot Password?</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <Text style={styles.version}>Version 1.0.0</Text>
+                </View>
+            </TouchableWithoutFeedback>
+        </SafeAreaView>
     )   
 }
 

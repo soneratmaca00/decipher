@@ -9,7 +9,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Signup from './proje/Signup';
 import Login from './proje/Login';
 import Deposit from './proje/Deposit';
-
+import Preview from './proje/Preview'; 
+import Settings from './proje/Settings';
+import DepositSuccess from './proje/DepositSuccess';
+import Earn1 from './proje/Earn1'
 
 const Stack = createStackNavigator();
 
@@ -32,6 +35,15 @@ function App() {
         options={{ headerShown: false }}  />
         <Stack.Screen name="Deposit" component={Deposit} 
         options={{ headerShown: false }}  />
+        <Stack.Screen name="Preview" component={Preview} 
+        options={{ headerShown: false }}  />
+        <Stack.Screen name="Settings" component={Settings} 
+        options={{ headerShown: false }}  />
+        <Stack.Screen name="DepositSuccess" component={DepositSuccess} 
+        options={{ headerShown: false }}  />
+        <Stack.Screen name="Earn1" component={Earn1} 
+        options={{ headerShown: false }}  />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
