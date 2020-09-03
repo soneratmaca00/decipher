@@ -1,19 +1,19 @@
 import * as React from 'react';
 
-import ViewPager from './proje/ViewPager';
-import Dashboard from './proje/Dashboard';
+import ViewPager from './src/ViewPager';
+import Dashboard from './src/Dashboard';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Signup from './proje/Signup';
-import Login from './proje/Login';
-import Deposit from './proje/Deposit';
-import Preview from './proje/Preview'; 
-import Settings from './proje/Settings';
-import DepositSuccess from './proje/DepositSuccess';
-import Earn1 from './proje/Earn1'
+import Signup from './src/Signup';
+import Login from './src/Login';
+import Deposit from './src/Deposit';
+import Preview from './src/Preview'; 
+import Settings from './src/Settings';
+import DepositSuccess from './src/DepositSuccess';
+import Earn1 from './src/Earn1'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
-import rootReducer from './proje/reducer/rootReducer'
+import rootReducer from './src/reducer/rootReducer'
 
 
 const Stack = createStackNavigator();
