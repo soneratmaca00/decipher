@@ -6,6 +6,7 @@ import Icona from 'react-native-vector-icons/EvilIcons'
 import IconApple from 'react-native-vector-icons/FontAwesome5' 
 import IconNext from 'react-native-vector-icons/MaterialIcons'
 import { SafeAreaView } from 'react-native-safe-area-context';
+import {useDispatch,useSelector} from 'react-redux'
 
 
 
@@ -31,16 +32,23 @@ const numbers = [
 
 export default function Login({ navigation }) {
    
-    const [deposit, setDeposit] = useState('')
-   
+    const deposit1 = useSelector((state) => state.deposit)
+    const dispacth = useDispatch();  
 
     const clickHandler = (item) => {
-        if(deposit.length > 0 && item.key === 12 ){
+        if(deposit1.length > 0 && item.key === 12 ){
             
-            
-            setDeposit(deposit.substring(0, deposit.length - 1))
+            dispacth({
+                type:'DEPOSITCHANGE',
+                payload:(deposit1.substring(0, deposit1.length - 1))
+              })
         }else if(item.key != 12 ){
-            setDeposit(deposit + item.number)
+            
+            
+            dispacth({
+                type:'DEPOSITCHANGE',
+                payload:deposit1 + item.number
+              })
             
         }else{
 
@@ -66,12 +74,13 @@ export default function Login({ navigation }) {
             </View>
             <View style={styles.depositContainer}>
                 <Text style={styles.depositAmount} numberOfLines={1}
-                adjustsFontSizeToFit>${deposit}</Text>
+                adjustsFontSizeToFit>${deposit1}</Text>
                 <View style={styles.oneTime}>
                     <Icon name="repeat" size={10} color="#1B73DD"  style={[styles.repeatIcon]}/>
                     <Text style={styles.oneTimeText} >One-time purchase</Text>
                 </View>
             </View>
+            <TouchableOpacity>
             <View style={styles.applePayContainer}>
                 <View style={styles.applePayIconContainer}>
                     <IconApple name="apple-pay" size={20} color="#717171"  style={[styles.applePayIcon]}/>
@@ -83,7 +92,7 @@ export default function Login({ navigation }) {
                 <Text style={styles.increaseLimit} >Increase Limit</Text>
                 <IconNext name="navigate-next" size={17} color="#A6A6A6"  style={[styles.applePayIcon]}/>
             </View>
-                
+            </TouchableOpacity>    
                 <FlatList
                 numColumns={3}
                 keyExtractor={(item) => item.key}
@@ -104,7 +113,7 @@ export default function Login({ navigation }) {
             <TouchableOpacity
                         style={styles.depositPreviewContainer}
                         onPress={() => navigation.navigate('Preview', {
-                            depositAmount:deposit,
+                            depositAmount:deposit1,
                         })}
                         
                         >
@@ -136,8 +145,6 @@ const styles=StyleSheet.create({
     topIcon:{
         marginLeft:10,
     },
-    
-    
     smallItems:{
         color:'white',
         backgroundColor:'#0066ff',        

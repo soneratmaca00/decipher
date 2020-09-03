@@ -3,7 +3,8 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 
 import RadialGradient from 'react-native-radial-gradient';
 
-import IconCheck from 'react-native-vector-icons/MaterialCommunityIcons' 
+import IconCheck from 'react-native-vector-icons/MaterialCommunityIcons'
+import {useDispatch,useSelector} from 'react-redux'
 
 const gradientwidth = 245;
 const gradientHeight = 285;
@@ -11,7 +12,7 @@ const gradientHeight = 285;
 
 export default function DepositSuccess(props) {
    const closeModalText = 'false'
- 
+   const deposit1 = useSelector((state) => state.deposit)
     
     
     return (
@@ -28,7 +29,7 @@ export default function DepositSuccess(props) {
                 <View style={styles.gradientInner}>
                 <IconCheck name="check-circle-outline" size={80} color="white"  style={[styles.iconCheck]}/>
                 <Text style={styles.success}>Success!</Text>
-                <Text style={styles.amount}>${props.amount1}</Text>
+                <Text style={styles.amount}>${deposit1}</Text>
                 <Text style={styles.description}>has been instantly deposited to your account</Text>            
                 <TouchableOpacity style={styles.done}
                 onPress={() => 

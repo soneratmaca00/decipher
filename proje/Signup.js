@@ -26,7 +26,7 @@ export default function Login({ navigation }) {
                     </TouchableOpacity>           
                 </View>
                 <View style={styles.smallContainer}>
-                    <Image style={styles.smallImg} source={require('./Blue2.png')}/>
+                    <Image style={styles.smallImg} source={require('./photos/Blue2.png')}/>
                     <Text style={styles.LogInText}>Sign Up</Text>
                 </View>
                 <View style={styles.loginContainerOuter}>

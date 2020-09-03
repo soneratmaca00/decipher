@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image,Dimensions, 
-    TextInput, TouchableOpacity,SafeAreaView, KeyboardAvoidingView } from 'react-native'
+    TextInput, TouchableOpacity,SafeAreaView } from 'react-native'
 import Icon from 'react-native-vector-icons/EvilIcons'
-import { TouchableWithoutFeedback, ScrollView } from 'react-native-gesture-handler';
+import {  ScrollView } from 'react-native-gesture-handler';
 
 const screenWidth = Math.round(Dimensions.get('window').width)
 const screenHeight = Math.round(Dimensions.get('window').height)
@@ -25,7 +25,7 @@ export default function Login({ navigation }) {
                     </TouchableOpacity>          
                 </View>
                 <View style={styles.smallContainer}>
-                    <Image style={styles.smallImg} source={require('./Blue2.png')}/>
+                    <Image style={styles.smallImg} source={require('./photos/Blue2.png')}/>
                     <Text style={styles.LogInText}>Log In</Text>
                 </View>
                 <View style={styles.loginContainerOuter}>

@@ -6,20 +6,23 @@ import IconBack from 'react-native-vector-icons/MaterialCommunityIcons'
 import IconBank from 'react-native-vector-icons/FontAwesome' 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import DepositSuccess from './DepositSuccess';
-
-
-
+import {useDispatch,useSelector} from 'react-redux'
+import PreviewListItem from './components/PreviewListItem' 
 const screenWidth = Math.round(Dimensions.get('window').width)
 const screenHeight = Math.round(Dimensions.get('window').height)
 
 
-export default function Preview({ navigation, route }) {
-   const { depositAmount } = route.params;
+export default function Preview({ navigation }) {
+   
    const [modalVisible, setModalVisible] = useState(false);
+   const deposit1 = useSelector((state) => state.deposit)
 
    const closeModal = (text) =>{
         setModalVisible(text);
    }
+   const iconBank = (<IconBank name="bank" size={20} color="#D5E2F4"  style={{marginRight:5}}/>)
+
+   
     return (
         <SafeAreaView style={[styles.safeAreaView]}>
             <Modal
@@ -29,7 +32,7 @@ export default function Preview({ navigation, route }) {
             onRequestClose={() => {
                 setModalVisible(false);
                 }}>
-            <DepositSuccess closeModal={closeModal} amount1={depositAmount}/>
+            <DepositSuccess closeModal={closeModal} />
             </Modal>
             <View style={styles.topBar} >
                 <TouchableOpacity
@@ -46,37 +49,23 @@ export default function Preview({ navigation, route }) {
             </View>
             <View style={styles.depositContainer}>
                 <Text style={styles.depositAmount} numberOfLines={1}
-                adjustsFontSizeToFit>${depositAmount}</Text>
+                adjustsFontSizeToFit>${deposit1}</Text>
             </View>
 
             <View>
-                <View style={[styles.ListItems, {borderTopWidth: 1}]}>
-                    <Text style={styles.ListItemsTextLeft}>Payment method</Text>
-                    <View style={{flexDirection:'row'}}>
-                    <IconBank name="bank" size={20} color="#D5E2F4"  style={[styles.bankIcon]}/>
-                    <Text style={styles.ListItemsTextRight}>Bank of America</Text>
-                    </View>
-                </View>
-                <View style={styles.ListItems}>
-                    <Text style={styles.ListItemsTextLeft}>Deposited</Text>
-                    <Text style={styles.ListItemsTextRight}>Instantly</Text>
-                </View>
-                <View style={styles.ListItems}>
-                    <Text style={styles.ListItemsTextLeft}>Lockup Period</Text>
-                    <Text style={styles.ListItemsTextRight}>None</Text>
-                </View>
-                <View style={styles.ListItems}>
-                    <Text style={styles.ListItemsTextLeft}>Current APY</Text>
-                    <Text style={styles.ListItemsTextRight}>3.0%</Text>
-                </View>
-                <View style={styles.ListItemsFeeContainer}>
+                <PreviewListItem style={{borderTopWidth: 1}} leftText='Payment method' rightText='Bank of America' 
+                icon={iconBank}/>
+                <PreviewListItem  leftText='Deposited' rightText='Instantly' />
+                <PreviewListItem  leftText='Lockup Period' rightText='None' />
+                <PreviewListItem  leftText='Current APY' rightText='3.0%' />                
+                <View style={styles.ListItemsFeeContainer}>               
                     <View style={styles.ListItemsFee}>
                         <Text style={styles.ListItemsTextLeft}>Fee</Text>
                         <Text style={styles.ListItemsTextRight}>$0</Text>
                     </View>
                     <View style={styles.ListItemsFee}>
                         <Text style={styles.ListItemsTotalTextLeft}>Total</Text>
-                        <Text style={styles.ListItemsTotalTextRight}>${depositAmount}</Text>
+                        <Text style={styles.ListItemsTotalTextRight}>${deposit1}</Text>
                     </View>
                 </View>
                 <Text style={styles.fundsText} >Funds will be debited within 3 days.</Text>
@@ -109,8 +98,6 @@ const styles=StyleSheet.create({
         justifyContent:'space-between',
         height:'100%',
     },
-
-
     topBar:{
         flexDirection:'row',
         
@@ -120,8 +107,6 @@ const styles=StyleSheet.create({
     topIcon:{
         marginLeft:10,
     },
-    
-    
     smallItems:{
         color:'white',
         backgroundColor:'#0066ff',        
@@ -129,8 +114,7 @@ const styles=StyleSheet.create({
         alignItems: 'center',
         padding:3,
         borderRadius:20,
-        marginLeft:110,
-              
+        marginLeft:110,     
     },
     smallItemsText:{
         color:'white',      
@@ -145,22 +129,6 @@ const styles=StyleSheet.create({
         fontSize:40,
         fontWeight:'bold',
         height:50
-    },
-
-    ListItems:{
-        flexDirection:'row',
-        justifyContent:'space-between',
-        paddingHorizontal:12,
-        paddingVertical:15,
-        borderColor:'#D6D6D6',
-        borderBottomWidth:1,
-    },
-    ListItemsTextRight:{
-        color:'#5D5D5D',
-    },
-    ListItemsTextLeft:{
-        color:'#717171',
-        fontWeight:'bold',
     },
     bankIcon:{
         marginRight:5,
@@ -202,7 +170,6 @@ const styles=StyleSheet.create({
         borderRadius:20,
         alignItems:'center',
         marginVertical:10,
-        
         marginTop:80,
       },
       depositNowText:{

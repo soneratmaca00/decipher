@@ -12,7 +12,7 @@ export default function Logo() {
 
     return(
         <View style={styles.container}>
-            <Image  style={styles.stretch} source={require('./logo.png')}/>
+            <Image  style={styles.stretch} source={require('./photos/logo.png')}/>
         </View>
 
     )

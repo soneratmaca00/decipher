@@ -10,6 +10,9 @@ import IconAlarm from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconGraph from 'react-native-vector-icons/Entypo';
 import { AreaChart, XAxis } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
+import DashBoardListItem from './components/DashboardListİtem'
+import {useDispatch,useSelector} from 'react-redux'
+
 const screenWidth = Math.round(Dimensions.get('window').width)
 
 
@@ -17,9 +20,20 @@ export default function Dashboard({ navigation }) {
     const data = [40, 48, 50, 55, 63, 65 ]
     const days = ['Feb', 'Mar', 'Apr','May','Jun','Jul']
     const contentInset = { top: 20, bottom: 20 }
+    const iconUSD = (<IconUSD name="currency-usd" size={25} color="#428DFF"  style={styles.topIcon} />)
+    const iconPig = (<IconPig name="piggy-bank" size={25} color="#428DFF"  style={styles.topIcon} />)
+    const iconAlarm = ( <IconAlarm name="alarm" size={25} color="#428DFF"  style={styles.topIcon} />)
+    const iconGraph = (<IconGraph name="bar-graph" size={25} color="#428DFF"  style={styles.topIcon} />)
+    const dispacth = useDispatch(); 
 
+    const clickDeposit = () =>{
+        navigation.navigate('Deposit')
+        dispacth({
+            type:'DEPOSITCHANGE',
+            payload:''
+          })
 
-    
+    }
     
     return (
         <SafeAreaView style={styles.safeAreaView} >
@@ -37,12 +51,12 @@ export default function Dashboard({ navigation }) {
                         <Text style={[styles.smallItemsText]}>Settings</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={[styles.smallItems]}
-                    onPress={() => navigation.navigate('Deposit')}                        
+                    onPress={() => clickDeposit()}                        
                     >
                         <Text style={[styles.smallItemsText]}>Deposit</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={[styles.smallItems]}
-                    onPress={() => navigation.navigate('Deposit')}                        
+                    onPress={() => clickDeposit()}                        
                     >
                         <Text style={styles.smallItemsText}>Earn</Text>
                     </TouchableOpacity>
@@ -56,47 +70,15 @@ export default function Dashboard({ navigation }) {
                 
             }
             </RadialGradient>
-
-            
                 <View style={styles.whitecontainer}>
                     <View style={styles.whiteContainerfirstBlock}>
-                        <View style={[styles.whiteContainerItem,{borderBottomWidth:2, borderBottomColor:'#ECF0F5'}]}>
-                            <IconUSD name="currency-usd" size={25} color="#428DFF"  style={styles.topIcon} />
-                            <View style={styles.whiteContainerItemInner}>
-                            <Text style={styles.whiteContainerItemTxt}>Interest Earned</Text>
-                            <Text style={styles.whiteContainerItemAmount}>$1,927.36</Text>
-                            </View>
-                        </View>
-                        <View style={[styles.whiteContainerItem,{borderBottomWidth:2, borderBottomColor:'#ECF0F5'}]}>
-                            <IconPig name="piggy-bank" size={25} color="#428DFF"  style={styles.topIcon} />
-                            <View style={styles.whiteContainerItemInner}>
-                            <Text style={styles.whiteContainerItemTxt}>Current APY</Text>
-                            <Text style={styles.whiteContainerItemAmount}>3.0%</Text>
-                            </View>
-                        </View>
-                        <View style={styles.whiteContainerItem}>
-                            <IconAlarm name="alarm" size={25} color="#428DFF"  style={styles.topIcon} />
-                            <View style={styles.whiteContainerItemInner}>
-                            <Text style={styles.whiteContainerItemTxt}>Lockup Period</Text>
-                            <Text style={styles.whiteContainerItemAmount}>None</Text>
-                            </View>
-                        </View>
+                        <DashBoardListItem firstIcon={iconUSD} firstText='Interest Earned' secondText='$1,927.36'/>
+                        <DashBoardListItem firstIcon={iconPig} firstText='Current APY' secondText='3.0%'/>
+                        <DashBoardListItem firstIcon={iconAlarm} firstText='Lockup Period' secondText='None'/>
                     </View>
                     <View style={styles.whiteContainerSecondBlock}>
-                        <View style={[styles.whiteContainerItem,{borderBottomWidth:2, borderBottomColor:'#ECF0F5'}]}>
-                            <IconGraph name="bar-graph" size={25} color="#428DFF"  style={styles.topIcon} />
-                            <View style={styles.whiteContainerItemInner}>
-                            <Text style={styles.whiteContainerItemTxt}>This Week</Text>
-                            <Text style={styles.whiteContainerItemAmount}>$33.83</Text>
-                            </View>
-                        </View>
-                        <View style={[styles.whiteContainerItem]}>
-                            <IconGraph name="bar-graph" size={25} color="#428DFF"  style={styles.topIcon} />
-                            <View style={styles.whiteContainerItemInner}>
-                            <Text style={styles.whiteContainerItemTxt}>This Month</Text>
-                            <Text style={styles.whiteContainerItemAmount}>$142.09</Text>
-                            </View>
-                        </View>
+                        <DashBoardListItem firstIcon={iconGraph} firstText='This Week' secondText='$33.83'/>
+                        <DashBoardListItem firstIcon={iconGraph} firstText='This Month' secondText='$142.09'/>
                     </View>
                     <View style={styles.thirdBlock}>
                     <AreaChart
@@ -117,8 +99,6 @@ export default function Dashboard({ navigation }) {
                     />
 
                     </View>
-        
-                    
                 </View> 
         </SafeAreaView>
     )
@@ -178,18 +158,6 @@ const styles = StyleSheet.create({
         backgroundColor:'white',
         borderRadius:20,
         marginBottom:15,
-    },
-    whiteContainerItem:{
-        flexDirection:'row',
-        paddingVertical:10,
-        paddingHorizontal:20,
-        alignItems:'center',
-    },
-    whiteContainerItemInner:{
-        flex:1,
-        flexDirection:'row',
-        justifyContent:'space-between',
-        marginLeft:5,
     },
     whiteContainerSecondBlock:{
         backgroundColor:'white',

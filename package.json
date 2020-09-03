@@ -32,6 +32,8 @@
     "react-native-web-swiper": "^2.1.2",
     "react-navigation": "^4.3.9",
     "react-navigation-stack": "^2.5.1",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
     "rn-viewpager": "^1.2.9"
   },
   "devDependencies": {
